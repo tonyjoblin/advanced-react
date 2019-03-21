@@ -13,13 +13,19 @@ class App extends React.Component {
       articles: api.getArticles(data),
       authors: api.getAuthors(data),
     };
+
+    const { authors } = this.state;
+
+    this.articleActions = {
+      lookupAuthor: authorId => authors[authorId],
+    };
   }
 
   render() {
-    const { articles, authors } = this.state;
+    const { articles } = this.state;
     return (
       <div>
-        <Articles articles={articles} authors={authors} />
+        <Articles articles={articles} actions={this.articleActions} />
       </div>
     );
   }
