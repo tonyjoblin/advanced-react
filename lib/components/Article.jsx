@@ -33,7 +33,11 @@ const Article = (props) => {
     <div style={styles.article}>
       <div style={styles.title}>{article.title}</div>
       <div style={styles.date}>{dateDisplay(article.date)}</div>
-      <div style={styles.author}><a href={author.website}>{author.firstName} {author.lastName}</a></div>
+      <div style={styles.author}>
+        <a href={author.website}>
+          {author.firstName} {author.lastName}
+        </a>
+      </div>
       <div style={styles.body}>{article.body}</div>
     </div>
   );

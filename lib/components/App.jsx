@@ -1,5 +1,5 @@
 import React from 'react';
-import Articles from './Articles';
+import ArticleList from './ArticleList';
 import DataApi from '../DataApi';
 import { data } from '../blog-data.json';
 
@@ -25,7 +25,7 @@ class App extends React.Component {
     const { articles } = this.state;
     return (
       <div>
-        <Articles articles={articles} actions={this.articleActions} />
+        <ArticleList articles={articles} actions={this.articleActions} />
       </div>
     );
   }
