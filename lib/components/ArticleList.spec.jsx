@@ -10,7 +10,7 @@ describe('ArticleList', () => {
     },
     articleActions: {
       lookupAuthor: jest.fn(() => ({})),
-    }
+    },
   };
 
   it('renders correctly', () => {
