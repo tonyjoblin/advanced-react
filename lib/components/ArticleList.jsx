@@ -3,15 +3,14 @@ import PropTypes from 'prop-types';
 import Article from './Article';
 
 const ArticleList = (props) => {
-  const { articles, actions } = props;
-  // console.log(props);
+  const { articles, articleActions } = props;
   return (
     <div>
       {Object.values(articles).map(article => (
         <Article
           key={article.id}
           article={article}
-          actions={actions}
+          articleActions={articleActions}
         />
       ))}
     </div>
@@ -20,7 +19,7 @@ const ArticleList = (props) => {
 
 ArticleList.propTypes = {
   articles: PropTypes.object.isRequired,
-  actions: PropTypes.object.isRequired,
+  articleActions: PropTypes.object.isRequired,
 };
 
 export default ArticleList;

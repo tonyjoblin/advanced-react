@@ -25,7 +25,7 @@ class App extends React.Component {
     const { articles } = this.state;
     return (
       <div>
-        <ArticleList articles={articles} actions={this.articleActions} />
+        <ArticleList articles={articles} articleActions={this.articleActions} />
       </div>
     );
   }
