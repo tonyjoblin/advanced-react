@@ -1,13 +1,17 @@
 const path = require('path');
 
 module.exports = {
-  entry: ['@babel/polyfill', './lib/components/Index.jsx'],
+  resolve: {
+    modules: [
+      path.resolve('./lib'),
+      path.resolve('./node_modules'),
+    ],
+    extensions: ['.js', '.jsx'],
+  },
+  entry: ['@babel/polyfill', './lib/renderers/dom.jsx'],
   output: {
     path: path.resolve(__dirname, 'public'),
     filename: 'bundle.js',
-  },
-  resolve: {
-    extensions: ['.js', '.jsx']
   },
   module: {
     rules: [
