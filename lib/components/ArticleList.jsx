@@ -6,7 +6,7 @@ const ArticleList = (props) => {
   const { articles, articleActions } = props;
   return (
     <div>
-      {Object.values(articles).map(article => (
+      {articles.map(article => (
         <Article
           key={article.id}
           article={article}
@@ -18,8 +18,18 @@ const ArticleList = (props) => {
 };
 
 ArticleList.propTypes = {
-  articles: PropTypes.object.isRequired,
-  articleActions: PropTypes.object.isRequired,
+  articles: PropTypes.arrayOf(
+    PropTypes.shape({
+      authorId: PropTypes.string.isRequired,
+      body: PropTypes.string.isRequired,
+      date: PropTypes.string.isRequired,
+      id: PropTypes.string.isRequired,
+      title: PropTypes.string.isRequired,
+    }),
+  ).isRequired,
+  articleActions: PropTypes.shape({
+    lookupAuthor: PropTypes.func.isRequired,
+  }).isRequired,
 };
 
 export default ArticleList;

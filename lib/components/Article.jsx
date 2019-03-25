@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const styles = {
   article: {
@@ -41,6 +42,19 @@ const Article = (props) => {
       <div style={styles.body}>{article.body}</div>
     </div>
   );
+};
+
+Article.propTypes = {
+  article: PropTypes.shape({
+    authorId: PropTypes.string.isRequired,
+    body: PropTypes.string.isRequired,
+    date: PropTypes.string.isRequired,
+    id: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+  }).isRequired,
+  articleActions: PropTypes.shape({
+    lookupAuthor: PropTypes.func.isRequired,
+  }).isRequired,
 };
 
 export default Article;

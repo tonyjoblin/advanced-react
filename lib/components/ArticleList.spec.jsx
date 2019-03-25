@@ -4,10 +4,22 @@ import ArticleList from './ArticleList';
 
 describe('ArticleList', () => {
   const testProps = {
-    articles: {
-      a: { id: 'a' },
-      b: { id: 'b' },
-    },
+    articles: [
+      {
+        id: 'a',
+        authorId: '1',
+        body: 'body',
+        title: 'title',
+        date: '2019-01-02',
+      },
+      {
+        id: 'b',
+        authorId: '1',
+        body: 'body',
+        title: 'title',
+        date: '2019-01-02',
+      },
+    ],
     articleActions: {
       lookupAuthor: jest.fn(() => ({})),
     },
