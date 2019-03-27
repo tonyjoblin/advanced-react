@@ -1,23 +1,20 @@
 import React from 'react';
-import DataApi from 'state-api';
+import PropTypes from 'prop-types';
 import ArticleList from './ArticleList';
-import { data } from '../blog-data.json';
-
-const api = new DataApi(data);
 
 class App extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      articles: api.getArticles(),
-      authors: api.getAuthors(),
-    };
-
-    const { authors } = this.state;
+    const { initialData } = this.props;
+    const { articles, authors } = initialData;
+    this.state = { articles, authors };
 
     this.articleActions = {
-      lookupAuthor: authorId => authors[authorId],
+      lookupAuthor: (authorId) => {
+        const { authors } = this.state;
+        return authors[authorId];
+      },
     };
   }
 
