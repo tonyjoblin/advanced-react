@@ -1,6 +1,6 @@
 import React from 'react';
-import ArticleList from './ArticleList';
 import DataApi from 'state-api';
+import ArticleList from './ArticleList';
 import { data } from '../blog-data.json';
 
 const api = new DataApi(data);
