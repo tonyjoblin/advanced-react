@@ -10,8 +10,8 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      articles: api.getArticles(data),
-      authors: api.getAuthors(data),
+      articles: api.getArticles(),
+      authors: api.getAuthors(),
     };
 
     const { authors } = this.state;
