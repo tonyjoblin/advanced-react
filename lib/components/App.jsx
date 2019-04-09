@@ -1,14 +1,14 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import ArticleList from './ArticleList';
+import SearchBar from './SearchBar';
+import pickBy from 'lodash.pickby';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
 
     const { initialData } = this.props;
-    const { articles, authors } = initialData;
-    this.state = { articles, authors };
+    this.state = { ...initialData };
 
     this.articleActions = {
       lookupAuthor: (authorId) => {
@@ -16,13 +16,29 @@ class App extends React.Component {
         return authors[authorId];
       },
     };
+
+    this.setSearchTerm = this.setSearchTerm.bind(this);
+  }
+
+  setSearchTerm(searchTerm) {
+    this.setState({ searchTerm });
   }
 
   render() {
-    const { articles } = this.state;
+    const { searchTerm } = this.state;
+    let { articles } = this.state;
+    if (searchTerm) {
+      articles = pickBy(articles, (value) => {
+        return value.title.match(searchTerm) || value.body.match(searchTerm);
+      });
+    }
     return (
       <div>
-        <ArticleList articles={Object.values(articles)} articleActions={this.articleActions} />
+        <SearchBar doSearch={this.setSearchTerm} />
+        <ArticleList
+          articles={Object.values(articles)}
+          articleActions={this.articleActions}
+        />
       </div>
     );
   }

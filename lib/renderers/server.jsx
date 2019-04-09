@@ -8,10 +8,7 @@ import App from 'components/App';
 const serverRender = async () => {
   const rawData = await axios.get(`http://${config.host}:${config.port}/data`);
   const api = new DataApi(rawData.data);
-  const initialData = {
-    articles: api.getArticles(),
-    authors: api.getAuthors(),
-  };
+  const initialData = { ...api.getState() };
 
   return {
     initialMarkup: ReactDOMServer.renderToString(<App initialData={initialData} />),
